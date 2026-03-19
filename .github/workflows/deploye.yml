@@ -4,6 +4,10 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   deploy:
@@ -26,7 +30,7 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           source: "cicd-demo.tar"
-          target: "/home/ec2-user/"
+          target: "/home/${{ secrets.EC2_USER }}/"
 
       - name: Deploy
         uses: appleboy/ssh-action@v1.0.3
