@@ -36,3 +36,4 @@ terraform.rc
 
 # Docker
 *.tar
+terraform/.terraform.lock.hcl
